@@ -3,7 +3,7 @@ import Link from 'next/link'
 import 'isomorphic-fetch'
 import Summary from '../components/summary'
 
-export default class MyPage extends React.Component {
+export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
     const id = itemUrl.query.joe
 
@@ -19,7 +19,7 @@ export default class MyPage extends React.Component {
       <div>
         <h1>{this.props.title}</h1>
         <h2>{this.props.date}</h2>
-        <div>{this.props.description}</div>
+        <div dangerouslySetInnerHTML={{__html: this.props.description}}></div>
         <p>Auteur: {this.props.author}</p>
         <Link prefetch href='/'><a>Home</a></Link>
       </div>

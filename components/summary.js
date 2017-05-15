@@ -7,6 +7,6 @@ export default ({ it, id }) =>
     <h3>{it.date}</h3>
     <p><i>{id}</i></p>
     <p>{it.url}</p>
-    <p>{it.summary}</p>
+    <div dangerouslySetInnerHTML={{__html: it.summary}}></div>
     <Link prefetch href={{ pathname: '/one', query: { joe: id }}}><a>Just One</a></Link>
   </div>
