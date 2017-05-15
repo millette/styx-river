@@ -1,7 +1,6 @@
 {
   "name": "m2",
   "version": "0.0.0",
-  "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
