@@ -1,21 +1,26 @@
 import React from 'react'
 import Link from 'next/link'
 import 'isomorphic-fetch'
+import Summary from '../components/summary'
 
 export default class MyPage extends React.Component {
   static async getInitialProps () {
-    // eslint-disable-next-line no-undef
-    const res = await fetch('http://localhost:5993/u2/item%3Ahttps%3A%2F%2Fwww.r0x.fr%2Fsujet%2Fla-playlist-r0x-fr.12678%2F')
+    const u = 'https://millette.cloudant.com/u2/_design/itemsDateTitlesWithGUID/_view/items?reduce=false&descending=true&limit=10&stale=update_after'
+    // const u = 'http://localhost:5993/u2/_design/itemsDateTitlesWithGUID/_view/items?reduce=false&descending=true&limit=10&stale=update_after'
+    const res = await fetch(u)
     return await res.json()
   }
 
   render () {
     return (
       <div>
-        <p>Next.js has {this.props.title} ⭐️</p>
-        <p>{this.props.date}</p>
-        <p>{this.props.link}</p>
-        <Link prefetch href='/preact'><a>How about preact?</a></Link>
+        {this.props.rows.map((row) => {
+          const it = row.value
+          const id = row.id
+          return (
+            <Summary it={it} id={id}></Summary>
+          )
+        })}
       </div>
     )
   }
