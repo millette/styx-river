@@ -5,16 +5,11 @@ import Summary from '../components/summary'
 
 export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
-    const id = itemUrl.query.joe
-
-    const u = 'https://millette.cloudant.com/u2/' + encodeURIComponent(id)
-    // const u = 'http://localhost:5993/u2/' + encodeURIComponent(id)
-    const res = await fetch(u)
+    const res = await fetch('https://millette.cloudant.com/u2/' + encodeURIComponent(['item', itemUrl.query.joe].join(':')))
     return await res.json()
   }
 
   render () {
-    console.log('THIS props:', this.props)
     return (
       <div>
         <h1>{this.props.title}</h1>
