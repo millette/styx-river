@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch'
 import Summary from '../components/summary'
 
 const perPage = 5
@@ -28,7 +28,7 @@ export default class MyPage extends React.Component {
     }
 
     const res = await fetch(u)
-    return await res.json()
+    return res.json()
   }
 
   render () {
@@ -47,7 +47,7 @@ export default class MyPage extends React.Component {
           const it = row.value
           const id = row.id.split(':').slice(1).join(':')
           return (
-            <Summary it={it} key={id} id={id}></Summary>
+            <Summary it={it} key={id} id={id} />
           )
         })}
 
