@@ -8,7 +8,7 @@ import tags from '../data/tags.json'
 export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
     if (itemUrl.query.tag) {
-      const u = `http://localhost:5993/u2/_design/categories/_view/categories?reduce=false&startkey=["${itemUrl.query.tag.toLowerCase()}","\\ufff0"]&endkey=["${itemUrl.query.tag.toLowerCase()}"]&stale=update_after&descending=true`
+      const u = `https://millette.cloudant.com/u2/_design/categories/_view/categories?reduce=false&startkey=["${itemUrl.query.tag.toLowerCase()}","\\ufff0"]&endkey=["${itemUrl.query.tag.toLowerCase()}"]&stale=update_after&descending=true`
       const res = await fetch(u)
       const all = await res.json()
       const rows = all.rows
