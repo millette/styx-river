@@ -37,7 +37,7 @@ export default class MyPage extends React.Component {
       year: nextPage.key[0],
       month: nextPage.key[1],
       day: nextPage.key[2],
-      id: encodeURIComponent(nextPage.id)
+      id: nextPage.id
     }
 
     return (

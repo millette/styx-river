@@ -9,11 +9,22 @@ export default class MyOnePage extends React.Component {
   }
 
   render () {
+    const d = this.props.date.split('T')[0].split('-')
+    const query = {
+      year: d[0],
+      month: d[1],
+      day: d[2],
+      id: this.props._id
+    }
     return (
       <div>
         <Link prefetch href='/'><a>Home</a></Link>
         <h1>{this.props.title}</h1>
-        <h2>{this.props.date}</h2>
+        <h2>
+          <Link prefetch href={{ pathname: '/', query }}>
+            <a>{this.props.date}</a>
+          </Link>
+        </h2>
         <div dangerouslySetInnerHTML={{__html: this.props.description}} />
         <p>Auteur: {this.props.author}</p>
         <Link prefetch href='/'><a>Home</a></Link>
