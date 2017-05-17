@@ -45,9 +45,9 @@ export default class MyPage extends React.Component {
         {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
         {this.props.rows.slice(0, perPage).map((row) => {
           const it = row.value
-          const id = row.id.split(':').slice(1).join(':')
+          const item = row.id.split(':').slice(1).join(':')
           return (
-            <Summary it={it} key={id} id={id} />
+            <Summary it={it} key={item} item={item} />
           )
         })}
 
