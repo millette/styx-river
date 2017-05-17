@@ -43,7 +43,7 @@ export default class MyPage extends React.Component {
     return (
       <div>
         <h1>Home</h1>
-        <p><Link href="/tags"><a>Tags</a></Link></p>
+        <p><Link href='/tags'><a>Tags</a></Link></p>
         {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
         {this.props.rows.slice(0, perPage).map((row) => {
           const it = row.value
