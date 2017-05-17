@@ -32,7 +32,7 @@ export default class MyOnePage extends React.Component {
             const tag = t1.toLowerCase()
             return (
               <li key={tag}>
-                <Link href={{ pathname: '/tags', query: {tag} }}><a>{t2}</a></Link>
+                <Link href={{ pathname: '/tags', query: { tag } }}><a>{t2}</a></Link>
               </li>
             )
           })}

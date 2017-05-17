@@ -2,24 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
 import Summary from '../components/summary'
+import tags from '../data/tags.json'
 
 // FIXME: add pager as in index.js
-
 export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
-    let u
-    // FIXME: Use cloudant URLs
     if (itemUrl.query.tag) {
-      u = `http://localhost:5993/u2/_design/categories/_view/categories?reduce=false&startkey=["${itemUrl.query.tag.toLowerCase()}","\\ufff0"]&endkey=["${itemUrl.query.tag.toLowerCase()}"]&stale=update_after&descending=true`
-    } else if (itemUrl.req && itemUrl.req.headers && itemUrl.req.headers.host) {
-      u = `http://${itemUrl.req.headers.host}/static/tags.json`
-    } else {
-      u = 'http://localhost:3000/static/tags.json'
-    }
-    const res = await fetch(u)
-    const tags = await res.json()
-    if (itemUrl.query.tag) {
-      return { tag: itemUrl.query.tag.toLowerCase(), rows: tags.rows }
+      const u = `http://localhost:5993/u2/_design/categories/_view/categories?reduce=false&startkey=["${itemUrl.query.tag.toLowerCase()}","\\ufff0"]&endkey=["${itemUrl.query.tag.toLowerCase()}"]&stale=update_after&descending=true`
+      const res = await fetch(u)
+      const all = await res.json()
+      const rows = all.rows
+      return { tag: itemUrl.query.tag.toLowerCase(), rows }
     }
     return { tags }
   }
@@ -35,7 +28,7 @@ export default class MyOnePage extends React.Component {
               tag = tag.toLowerCase()
               return (
                 <li key={tag}>
-                  <Link href={{ pathname: '/tags', query: {tag} }}><a>{tag}</a></Link>
+                  <Link href={{ pathname: '/tags', query: { tag } }}><a>{tag}</a></Link>
                 </li>
               )
             })}
