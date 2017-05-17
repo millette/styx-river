@@ -2,9 +2,10 @@
   "name": "m2",
   "version": "0.0.0",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
+    "dev": "standard && next",
+    "build": "standard && next build",
     "start": "next start",
+    "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "AGPL-3.0",
@@ -13,5 +14,8 @@
     "next": "^2.3.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
   }
 }
