@@ -25,8 +25,15 @@ export default class MyOnePage extends React.Component {
             <a>{this.props.date}</a>
           </Link>
         </h2>
-        <div dangerouslySetInnerHTML={{__html: this.props.description}} />
         <p>Auteur: {this.props.author}</p>
+        {this.props.categories && this.props.categories.length && <ol>
+          {this.props.categories.map((tag) =>
+            <li key={tag}>
+              <Link href={{ pathname: '/tags', query: {tag} }}><a>{tag}</a></Link>
+            </li>
+          )}
+        </ol>}
+        <div dangerouslySetInnerHTML={{__html: this.props.description}} />
         <Link prefetch href='/'><a>Home</a></Link>
       </div>
     )
