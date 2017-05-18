@@ -5,7 +5,7 @@ export default ({ children, title = 'Observatoire québécois du libre' }) =>
   <div>
     <Head>
       <title> OILQ { title }</title>
-      <meta charSet='utf-8' />
+      <meta charset='utf-8' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
     </Head>
     <header>
@@ -15,10 +15,8 @@ export default ({ children, title = 'Observatoire québécois du libre' }) =>
         <Link prefetch href='/about'><a>About</a></Link>
       </nav>
     </header>
-
     { children }
-
     <footer>
-      I`m here to stay
+      <p>Par <a href='http://robin.millette.info/'>Robin Millette</a></p>
     </footer>
   </div>
