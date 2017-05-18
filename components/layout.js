@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 
-export default ({ children, title = 'This is the default title' }) => (
+export default ({ children, title = 'Observatoire québécois du libre' }) =>
   <div>
     <Head>
       <title> OILQ { title }</title>
@@ -22,4 +22,3 @@ export default ({ children, title = 'This is the default title' }) => (
       I`m here to stay
     </footer>
   </div>
-)

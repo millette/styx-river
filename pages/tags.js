@@ -39,8 +39,8 @@ export default class MyOnePage extends React.Component {
     }
     if (this.props.rows && this.props.rows.length) {
       return (
-        <Layout title='By tags'>
-          <h1>By tags</h1>
+        <Layout title={`By tag: ${this.props.tag}`}>
+          <h1>By tag: {this.props.tag}</h1>
           {this.props.rows.map((row) => {
             const it = row.value
             const item = row.id.split(':').slice(1).join(':')
