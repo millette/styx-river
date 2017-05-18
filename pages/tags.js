@@ -9,8 +9,8 @@ import tags from '../data/tags.json'
 export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
     if (itemUrl.query.tag) {
-      const tag = encodeURIComponent(itemUrl.query.tag.toLowerCase())
-      const u = `https://millette.cloudant.com/u2/_design/categories/_view/categories?reduce=false&startkey=["${tag}","\\ufff0"]&endkey=["${tag}"]&stale=update_after&descending=true`
+      const tag = itemUrl.query.tag.toLowerCase()
+      const u = `https://millette.cloudant.com/u2/_design/categories/_view/categories?reduce=false&startkey=["${encodeURIComponent(tag)}","\\ufff0"]&endkey=["${encodeURIComponent(tag)}"]&stale=update_after&descending=true`
       const res = await fetch(u)
       const all = await res.json()
       const rows = all.rows
@@ -40,8 +40,8 @@ export default class MyOnePage extends React.Component {
     }
     if (this.props.rows && this.props.rows.length) {
       return (
-        <Layout title={`By tag: ${decodeURIComponent(this.props.tag)}`}>
-          <h1>By tag: {decodeURIComponent(this.props.tag)}</h1>
+        <Layout title={`By tag: ${this.props.tag}`}>
+          <h1>By tag: {this.props.tag}</h1>
           {this.props.rows.map((row) => {
             const it = row.value
             const item = row.id.split(':').slice(1).join(':')
