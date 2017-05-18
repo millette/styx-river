@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
 import Summary from '../components/summary'
+import Layout from '../components/layout'
 import tags from '../data/tags.json'
 
 // FIXME: add pager as in index.js
@@ -20,8 +21,7 @@ export default class MyOnePage extends React.Component {
   render () {
     if (this.props.tags && this.props.tags.length) {
       return (
-        <div>
-          <Link prefetch href='/'><a>Home</a></Link>
+        <Layout title='Tags'>
           <h1>Tags</h1>
           <ol>
             {this.props.tags.map((tag) => {
@@ -34,14 +34,13 @@ export default class MyOnePage extends React.Component {
             })}
           </ol>
           <Link prefetch href='/'><a>Home</a></Link>
-        </div>
+        </Layout>
       )
     }
     if (this.props.rows && this.props.rows.length) {
       return (
-        <div>
-          <h1><Link href='/'><a>Home</a></Link></h1>
-          <h2><Link href='/tags'><a>Tags</a></Link></h2>
+        <Layout title='By tags'>
+          <h1>By tags</h1>
           {this.props.rows.map((row) => {
             const it = row.value
             const item = row.id.split(':').slice(1).join(':')
@@ -49,7 +48,7 @@ export default class MyOnePage extends React.Component {
               <Summary it={it} key={item} item={item} />
             )
           })}
-        </div>
+        </Layout>
       )
     }
     return <p>Weird...</p>

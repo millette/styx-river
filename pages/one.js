@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
+import Layout from '../components/layout'
 
 export default class MyOnePage extends React.Component {
   static async getInitialProps (itemUrl) {
@@ -17,8 +18,7 @@ export default class MyOnePage extends React.Component {
       id: this.props._id
     }
     return (
-      <div>
-        <Link prefetch href='/'><a>Home</a></Link>
+      <Layout title="One item">
         <h1>{this.props.title}</h1>
         <h2>
           <Link prefetch href={{ pathname: '/', query }}>
@@ -39,7 +39,7 @@ export default class MyOnePage extends React.Component {
         </ol>}
         <div dangerouslySetInnerHTML={{__html: this.props.description}} />
         <Link prefetch href='/'><a>Home</a></Link>
-      </div>
+      </Layout>
     )
   }
 }

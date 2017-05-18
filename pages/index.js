@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
 import Summary from '../components/summary'
+import Layout from '../components/layout'
 
 const perPage = 5
 
@@ -41,9 +42,7 @@ export default class MyPage extends React.Component {
     }
 
     return (
-      <div>
-        <h1><Link prefetch href='/'><a>Home</a></Link></h1>
-        <p><Link href='/tags'><a>Tags</a></Link></p>
+      <Layout>
         {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
         {this.props.rows.slice(0, perPage).map((row) => {
           const it = row.value
@@ -54,7 +53,7 @@ export default class MyPage extends React.Component {
         })}
 
         {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
-      </div>
+      </Layout>
     )
   }
 }
