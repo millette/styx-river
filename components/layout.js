@@ -12,6 +12,8 @@ export default ({ children, title = 'Observatoire québécois du libre' }) =>
       <nav>
         <Link prefetch href='/'><a>Home</a></Link> |
         <Link prefetch href='/tags'><a>Tags</a></Link> |
+        <Link prefetch href='/sources'><a>Sources</a></Link> |
+        <Link prefetch href='/sources-v2'><a>Sources V2</a></Link> |
         <Link prefetch href='/about'><a>About</a></Link>
       </nav>
     </header>
