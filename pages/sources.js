@@ -14,10 +14,7 @@ const ss = (a, b) => {
 export default class MyPage extends React.Component {
   static async getInitialProps (oy) {
     const year = oy && oy.query && oy.query.year || '2017'
-
-    // const u = `https://millette.cloudant.com/u2/_design/itemsDateTitlesWithGUID/_view/items?reduce=false&descending=true&limit=${perPage + 1}&stale=update_after`
-    const u = `http://localhost:5993/u2/_design/itemSourcesYear/_view/items?group_level=2&startkey=["${year}"]&endkey=["${year}","\\ufff0"]`
-
+    const u = `https://millette.cloudant.com/u2/_design/itemSourcesYear/_view/items?group_level=2&startkey=["${year}"]&endkey=["${year}","\\ufff0"]`
     const res = await fetch(u)
     const data = await res.json()
     const rows = data.rows
