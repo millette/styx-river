@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default ({ it, item }) => {
   const lang = it.meta && it.meta.language && <small>({it.meta.language})</small>
   const by = it.meta && it.meta.author && <h4>By {it.meta.author}</h4>
@@ -7,7 +5,7 @@ export default ({ it, item }) => {
 
   // console.log(it)
   return <div>
-    <h3>{it.meta && it.meta.title || item} {lang}</h3>
+    <h3>{(it.meta && it.meta.title) || item} {lang}</h3>
     {it.meta && it.meta.image && <img style={{float: 'left'}} src={it.meta.image.url} />}
     {by}
     <p><b>{it.error}</b></p>

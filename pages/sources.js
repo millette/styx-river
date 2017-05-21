@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
 import Layout from '../components/layout'
 
@@ -13,7 +12,7 @@ const ss = (a, b) => {
 
 export default class MyPage extends React.Component {
   static async getInitialProps (oy) {
-    const year = oy && oy.query && oy.query.year || '2017'
+    const year = (oy && oy.query && oy.query.year) || '2017'
     const u = `https://millette.cloudant.com/u2/_design/itemSourcesYear/_view/items?group_level=2&startkey=["${year}"]&endkey=["${year}","\\ufff0"]`
     const res = await fetch(u)
     const data = await res.json()
@@ -34,9 +33,9 @@ export default class MyPage extends React.Component {
       <Layout>
         <h1>Sources ({this.props.rows.length})</h1>
         <ol>
-        {this.props.rows.map((row) => <li key={row.source}>
-          {row.source} ({row.count})
-        </li>)}
+          {this.props.rows.map((row) => <li key={row.source}>
+            {row.source} ({row.count})
+          </li>)}
         </ol>
       </Layout>
     )
