@@ -44,7 +44,7 @@ export default class MyPage extends React.Component {
     }
 
     return (
-      <Layout>
+      <Layout active='sources-v2'>
         <h1>Sources V2</h1>
         {query && <Link prefetch href={{ pathname: '/sources-v2', query }}><a>Next page</a></Link>}
         {this.props.rows.slice(0, perPage).map((row) => {

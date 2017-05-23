@@ -30,7 +30,7 @@ export default class MyPage extends React.Component {
 
   render () {
     return (
-      <Layout>
+      <Layout active='sources'>
         <h1>Sources ({this.props.rows.length})</h1>
         <ol>
           {this.props.rows.map((row) => <li key={row.source}>

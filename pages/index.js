@@ -42,8 +42,14 @@ export default class MyPage extends React.Component {
     }
 
     return (
-      <Layout>
-        {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
+      <Layout active='home'>
+        {query && <Link prefetch href={{ query }}>
+          <ul className='pagination text-center' role='navigation' ariaLabel='Pagination'>
+            <li className='pagination-next'>
+              <a ariaLabel='Next page'>Next <span className='show-for-sr'>page</span></a>
+            </li>
+          </ul>
+        </Link>}
         {this.props.rows.slice(0, perPage).map((row) => {
           const it = row.value
           const item = row.id.split(':').slice(1).join(':')
@@ -52,7 +58,13 @@ export default class MyPage extends React.Component {
           )
         })}
 
-        {query && <Link prefetch href={{ query }}><a>Next page</a></Link>}
+        {query && <Link prefetch href={{ query }}>
+          <ul className='pagination text-center' role='navigation' ariaLabel='Pagination'>
+            <li className='pagination-next'>
+              <a ariaLabel='Next page'>Next <span className='show-for-sr'>page</span></a>
+            </li>
+          </ul>
+        </Link>}
       </Layout>
     )
   }

@@ -22,7 +22,7 @@ export default class MyOnePage extends React.Component {
   render () {
     if (this.props.tags && this.props.tags.length) {
       return (
-        <Layout title='Tags'>
+        <Layout active='tags' title='Tags'>
           <h1>Tags</h1>
           <ol>
             {this.props.tags.map((tag) => {
@@ -40,7 +40,7 @@ export default class MyOnePage extends React.Component {
     }
     if (this.props.rows && this.props.rows.length) {
       return (
-        <Layout title={`By tag: ${this.props.tag}`}>
+        <Layout active='tags' title={`By tag: ${this.props.tag}`}>
           <h1>By tag: {this.props.tag}</h1>
           {this.props.rows.map((row) => {
             const it = row.value

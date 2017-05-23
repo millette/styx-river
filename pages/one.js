@@ -18,7 +18,7 @@ export default class MyOnePage extends React.Component {
       id: this.props._id
     }
     return (
-      <Layout title='One item'>
+      <Layout active='one' title='One item'>
         <h1>{this.props.title}</h1>
         <h2>
           <Link prefetch href={{ pathname: '/', query }}>

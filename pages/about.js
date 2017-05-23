@@ -1,7 +1,7 @@
 import Layout from '../components/layout'
 
 export default () =>
-  <Layout title='About'>
+  <Layout active='about' title='About'>
     <h1>About</h1>
     <p>Observatoire de l'informatique libre québécois</p>
     <h2>Sources</h2>
